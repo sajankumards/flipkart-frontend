@@ -1,0 +1,393 @@
+/* BrandsSection.css - Professional & Clean */
+
+.brands-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #2874f0, #ff6b6b);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.section-title:hover::after {
+    width: 120px;
+}
+
+/* Brands Grid */
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Brand Card */
+.brand-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.brand-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #2874f0, #ff6b6b);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.brand-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.brand-card:hover::before {
+    transform: scaleX(1);
+}
+
+.brand-card:active {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Brand Logo/Icon */
+.brand-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+}
+
+.brand-card:hover .brand-logo {
+    transform: scale(1.1);
+}
+
+.brand-fallback {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+}
+
+.brand-icon {
+    font-size: 30px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.brand-card:hover .brand-fallback {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Brand Name */
+.brand-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: inherit;
+    text-align: center;
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.brand-card:hover .brand-name {
+    color: #2874f0;
+}
+
+/* Product Count */
+.product-count {
+    font-size: 0.75rem;
+    color: #666;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 8px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.brand-card:hover .product-count {
+    background: #2874f0;
+    color: white;
+}
+
+/* Loading Skeleton */
+.brands-grid.skeleton {
+    pointer-events: none;
+}
+
+.brand-card.skeleton {
+    background: #f0f0f0;
+    border: none;
+}
+
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        #f0f0f0 25%,
+        #e0e0e0 50%,
+        #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.brand-icon.shimmer {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+}
+
+.brand-name.shimmer {
+    width: 80px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+/* Error State */
+.error-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: #fff3f3;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.retry-btn {
+    background: #2874f0;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+    background: #1a5dc7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 116, 240, 0.3);
+}
+
+/* No Brands State */
+.no-brands {
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    padding: 40px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+/* Accessibility Focus Styles */
+.brand-card:focus-visible {
+    outline: 3px solid #2874f0;
+    outline-offset: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .brands-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 15px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .brands-section {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+    
+    .brands-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 12px;
+    }
+    
+    .brand-card {
+        padding: 15px 10px;
+    }
+    
+    .brand-logo,
+    .brand-fallback {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .brand-icon {
+        font-size: 24px;
+    }
+    
+    .brand-name {
+        font-size: 0.9rem;
+    }
+    
+    .product-count {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brands-section {
+        padding: 30px 0;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+    }
+    
+    .brands-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .brand-card {
+        padding: 12px 8px;
+    }
+    
+    .brand-logo,
+    .brand-fallback {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .brand-icon {
+        font-size: 20px;
+    }
+    
+    .brand-name {
+        font-size: 0.8rem;
+    }
+    
+    .product-count {
+        display: none;
+    }
+}
+
+/* Hover Effects for Touch Devices */
+@media (hover: hover) {
+    .brand-card:hover {
+        transform: translateY(-8px);
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .brands-section {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    }
+    
+    .section-title {
+        color: #ffffff;
+    }
+    
+    .brand-card {
+        background: #2d2d2d;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .brand-name {
+        color: #ffffff;
+    }
+    
+    .product-count {
+        color: #aaa;
+    }
+    
+    .no-brands {
+        background: #2d2d2d;
+        color: #aaa;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .brands-section {
+        display: none;
+    }
+}

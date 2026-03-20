@@ -1,0 +1,201 @@
+.banner-slider-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner-slider {
+    width: 100%;
+    background: #f1f3f6;
+}
+
+.banner-slide {
+    outline: none;
+    cursor: pointer;
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 60px;
+    min-height: 300px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.banner-text {
+    flex: 1;
+    max-width: 40%;
+}
+
+.banner-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.banner-text p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    opacity: 0.95;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.shop-now-btn {
+    background-color: white;
+    color: #333;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.shop-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #f8f8f8;
+}
+
+.shop-now-btn:active {
+    transform: translateY(0);
+}
+
+.banner-image {
+    flex: 1;
+    max-width: 50%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.banner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.banner-slide:hover .banner-image img {
+    transform: scale(1.05);
+}
+
+.fallback-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Slick slider customization */
+.slick-dots {
+    bottom: 20px;
+}
+
+.slick-dots li button:before {
+    color: white;
+    opacity: 0.5;
+    font-size: 12px;
+}
+
+.slick-dots li.slick-active button:before {
+    color: white;
+    opacity: 1;
+}
+
+.slick-prev,
+.slick-next {
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+}
+
+.slick-prev {
+    left: 20px;
+}
+
+.slick-next {
+    right: 20px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 30px;
+    color: white;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 968px) {
+    .banner-content {
+        padding: 30px 40px;
+        min-height: 250px;
+    }
+    
+    .banner-text h2 {
+        font-size: 2rem;
+    }
+    
+    .banner-text p {
+        font-size: 1rem;
+    }
+    
+    .banner-image {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-content {
+        flex-direction: column;
+        padding: 30px 20px;
+        text-align: center;
+        min-height: 400px;
+    }
+    
+    .banner-text {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .banner-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .banner-image {
+        max-width: 80%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-text h2 {
+        font-size: 1.5rem;
+    }
+    
+    .banner-image {
+        max-width: 100%;
+        height: 180px;
+    }
+    
+    .shop-now-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

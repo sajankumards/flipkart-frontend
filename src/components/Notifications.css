@@ -1,0 +1,128 @@
+.notifications-wrapper {
+    position: relative;
+}
+
+.notif-bell {
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+}
+
+.notif-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #ff6161;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.notif-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 340px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    background: #2874f0;
+    color: white;
+}
+
+.notif-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.notif-header button {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.notif-list {
+    max-height: 380px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f9f9f9;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.notif-item:hover {
+    background: #f5f5f5;
+}
+
+.notif-item.unread {
+    background: #e8f0fe;
+}
+
+.notif-item.unread:hover {
+    background: #d8e8fc;
+}
+
+.notif-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.notif-content {
+    flex: 1;
+}
+
+.notif-content p {
+    font-size: 14px;
+    color: #212121;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.notif-content span {
+    font-size: 12px;
+    color: #878787;
+}
+
+.unread-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2874f0;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.no-notif {
+    text-align: center;
+    padding: 40px;
+    color: #878787;
+    font-size: 15px;
+}

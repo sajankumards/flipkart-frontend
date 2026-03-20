@@ -1,0 +1,217 @@
+.spin-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.spin-modal {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 380px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.spin-close {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: #f5f5f5;
+    border: none;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    color: #878787;
+    transition: all 0.2s;
+}
+
+.spin-close:hover { background: #ffebee; color: #d32f2f; }
+
+.spin-header { text-align: center; margin-bottom: 20px; }
+.spin-header h2 { font-size: 24px; color: #212121; margin-bottom: 8px; }
+.spin-header p { font-size: 13px; color: #878787; }
+
+.spins-left-badge {
+    display: inline-block;
+    background: #fff3e0;
+    color: #e65100;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.wheel-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: #2874f0;
+    z-index: 2;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.wheel-canvas {
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    transition: transform 0.1s;
+}
+
+.wheel-canvas:hover:not(.spinning) { transform: scale(1.02); }
+
+.spin-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #2874f0, #1a5fd4);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(40,116,240,0.4);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.spin-btn:hover:not(.disabled):not(.no-spins) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(40,116,240,0.5);
+}
+
+.spin-btn.disabled { background: #878787; cursor: not-allowed; }
+.spin-btn.no-spins { background: #e0e0e0; color: #878787; box-shadow: none; cursor: not-allowed; }
+
+.spin-result {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9ff;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.result-emoji { font-size: 40px; margin-bottom: 8px; }
+.spin-result h3 { font-size: 22px; color: #212121; margin-bottom: 12px; }
+
+.result-reward {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 22px;
+    font-weight: 800;
+    color: #212121;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.spin-result p { font-size: 13px; color: #878787; margin-bottom: 8px; }
+
+.result-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px dashed #2874f0;
+    margin-bottom: 15px;
+}
+
+.result-code strong {
+    font-size: 20px;
+    color: #2874f0;
+    letter-spacing: 2px;
+}
+
+.result-code button {
+    padding: 5px 12px;
+    background: #2874f0;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.points-msg {
+    font-size: 15px !important;
+    color: #388e3c !important;
+    font-weight: 600;
+}
+
+.spin-shop-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #fb641b, #e85d19);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.spin-shop-btn:hover { transform: translateY(-2px); }
+
+.spin-prizes { margin-top: 10px; }
+.spin-prizes p { font-size: 13px; color: #878787; margin-bottom: 8px; text-align: center; }
+
+.prizes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+}
+
+.prize-chip {
+    padding: 4px 10px;
+    border: 1.5px solid;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+body.dark-mode .spin-modal { background: #1e1e1e; }
+body.dark-mode .spin-header h2 { color: #e0e0e0; }
+body.dark-mode .spin-result { background: #2a2a2a; }
+body.dark-mode .spin-result h3 { color: #e0e0e0; }
+body.dark-mode .result-code { background: #1e1e1e; }

@@ -1,0 +1,278 @@
+/* VoiceSearch.css - Improved */
+
+/* ── MIC BUTTON ── */
+.voice-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.12);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.voice-btn:hover {
+    background: rgba(255,255,255,0.22);
+    border-color: rgba(255,255,255,0.4);
+    transform: scale(1.08);
+}
+
+.voice-btn.listening {
+    background: #ff4444;
+    border-color: #ff4444;
+    animation: btnPulse 1.5s infinite;
+}
+
+@keyframes btnPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255,68,68,0.6); }
+    70%  { box-shadow: 0 0 0 12px rgba(255,68,68,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,68,68,0); }
+}
+
+/* ── OVERLAY ── */
+.voice-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── MODAL ── */
+.voice-modal {
+    background: white;
+    border-radius: 20px;
+    padding: 36px 32px 28px;
+    text-align: center;
+    z-index: 9999;
+    width: 340px;
+    max-width: 90vw;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    animation: popUp 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    position: relative;
+}
+
+@keyframes popUp {
+    from { opacity: 0; transform: scale(0.85) translateY(20px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Close Button */
+.voice-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: #f5f5f5;
+    border: none;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 13px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.voice-close:hover { background: #eee; color: #333; }
+
+/* ── ANIMATION WRAP ── */
+.voice-animation-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+/* Mic Circle */
+.mic-circle {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2874f0, #1a5dc7);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(40,116,240,0.35);
+}
+
+/* Pulse Rings */
+.ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid #2874f0;
+    animation: ringExpand 1.8s infinite ease-out;
+}
+
+.r1 { animation-delay: 0s; }
+.r2 { animation-delay: 0.5s; }
+.r3 { animation-delay: 1s; }
+
+@keyframes ringExpand {
+    0%   { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Waves */
+.voice-waves {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 36px;
+}
+
+.wave {
+    width: 5px;
+    background: linear-gradient(to top, #2874f0, #60a5fa);
+    border-radius: 3px;
+    animation: waveAnim 0.8s ease-in-out infinite;
+}
+
+.wave:nth-child(1) { height: 14px; }
+.wave:nth-child(2) { height: 22px; }
+.wave:nth-child(3) { height: 30px; }
+.wave:nth-child(4) { height: 22px; }
+.wave:nth-child(5) { height: 14px; }
+
+@keyframes waveAnim {
+    0%, 100% { transform: scaleY(0.5); }
+    50%       { transform: scaleY(1.2); }
+}
+
+/* ── STATUS TEXT ── */
+.voice-status { margin-bottom: 18px; min-height: 48px; }
+
+.voice-listening-text {
+    font-size: 17px;
+    font-weight: 600;
+    color: #212121;
+    margin-bottom: 6px;
+}
+
+.voice-interim {
+    font-size: 14px;
+    color: #2874f0;
+    font-style: italic;
+    min-height: 20px;
+}
+
+.voice-result {
+    font-size: 15px;
+    font-weight: 700;
+    color: #212121;
+    margin-bottom: 5px;
+}
+
+.voice-searching {
+    font-size: 13px;
+    color: #2874f0;
+    font-weight: 500;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+}
+
+.voice-error-text {
+    font-size: 13.5px;
+    color: #d32f2f;
+    font-weight: 500;
+    background: #ffebee;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border-left: 3px solid #d32f2f;
+    text-align: left;
+}
+
+/* ── HINTS ── */
+.voice-hints {
+    background: #f8f9ff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border: 1px solid #eef1ff;
+}
+
+.hints-title {
+    font-size: 11px;
+    color: #aaa;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.hints-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hints-row span {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #555;
+    font-style: italic;
+}
+
+/* ── ACTIONS ── */
+.voice-actions { display: flex; justify-content: center; }
+
+.voice-stop-btn,
+.voice-retry-btn {
+    padding: 10px 28px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    border: none;
+}
+
+.voice-stop-btn {
+    background: #ff4444;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255,68,68,0.3);
+}
+
+.voice-stop-btn:hover { background: #e53935; transform: translateY(-1px); }
+
+.voice-retry-btn {
+    background: linear-gradient(135deg, #2874f0, #1a5dc7);
+    color: white;
+    box-shadow: 0 4px 12px rgba(40,116,240,0.3);
+}
+
+.voice-retry-btn:hover { transform: translateY(-1px); }
+
+/* ── DARK MODE ── */
+body.dark-mode .voice-modal { background: #1e1e1e; }
+body.dark-mode .voice-listening-text,
+body.dark-mode .voice-result { color: #e0e0e0; }
+body.dark-mode .voice-close { background: #2a2a2a; color: #ccc; }
+body.dark-mode .voice-hints { background: #252525; border-color: #333; }
+body.dark-mode .hints-row span { background: #2a2a2a; border-color: #444; color: #ccc; }

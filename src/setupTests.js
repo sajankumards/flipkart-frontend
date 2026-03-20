@@ -1,5 +1,9 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+// Mock process for axios
+global.process = {
+  ...global.process,
+  version: '16.0.0',
+  browser: true,
+  env: {
+    NODE_ENV: 'development'
+  }
+};

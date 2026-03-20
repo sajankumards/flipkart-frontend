@@ -1,0 +1,300 @@
+/* SkeletonLoader.css */
+
+/* ── SHIMMER ANIMATION ── */
+@keyframes shimmer {
+    0%   { background-position: -600px 0; }
+    100% { background-position: 600px 0; }
+}
+
+/* ── BASE SKELETON BLOCK ── */
+.skeleton-block {
+    background: linear-gradient(
+        90deg,
+        #e8ecf0 0px,
+        #f5f7fa 40px,
+        #e8ecf0 80px
+    );
+    background-size: 600px 100%;
+    animation: shimmer 1.6s infinite linear;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .skeleton-block {
+        background: linear-gradient(
+            90deg,
+            #1e293b 0px,
+            #2d3748 40px,
+            #1e293b 80px
+        );
+        background-size: 600px 100%;
+    }
+}
+
+/* ── UTILITY ── */
+.mt-8  { margin-top: 8px; }
+.mb-8  { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mt-24 { margin-top: 24px; }
+
+/* ── PRODUCT CARD SKELETON ── */
+.skeleton-product-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+    min-width: 180px;
+    flex-shrink: 0;
+}
+
+.skeleton-product-image { padding: 0; }
+
+.skeleton-product-info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.skeleton-price-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 4px;
+}
+
+/* ── PRODUCT ROW SKELETON ── */
+.skeleton-product-row {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.skeleton-row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.skeleton-cards-grid {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+}
+
+/* ── BANNER SKELETON ── */
+.skeleton-banner {
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* ── CATEGORY ROW SKELETON ── */
+.skeleton-category-row {
+    display: flex;
+    gap: 20px;
+    padding: 16px 20px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    justify-content: space-between;
+}
+
+.skeleton-category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ── HOMEPAGE SKELETON ── */
+.skeleton-homepage {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.skeleton-section {
+    width: 100%;
+}
+
+.skeleton-spin-banner {
+    width: 100%;
+    padding: 0 4px;
+}
+
+/* ── PRODUCT DETAIL SKELETON ── */
+.skeleton-product-detail {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Breadcrumb */
+.skeleton-breadcrumb {
+    margin-bottom: 20px;
+}
+
+/* Detail Grid */
+.skeleton-detail-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 40px;
+    margin-bottom: 32px;
+}
+
+/* Images */
+.skeleton-detail-images {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skeleton-main-image {
+    height: 380px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.skeleton-thumbnails {
+    display: flex;
+    gap: 10px;
+}
+
+/* Info */
+.skeleton-detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.skeleton-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.skeleton-price-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Offers */
+.skeleton-offers {
+    padding: 12px 0;
+}
+
+.skeleton-offer-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Delivery */
+.skeleton-delivery {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skeleton-delivery-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Qty */
+.skeleton-qty-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Action Buttons */
+.skeleton-action-btns {
+    display: flex;
+    gap: 12px;
+}
+
+/* Highlights */
+.skeleton-highlights {
+    padding: 12px 0;
+}
+
+.skeleton-highlight-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Seller */
+.skeleton-seller-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Description */
+.skeleton-description {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-top: 16px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .skeleton-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .skeleton-main-image { height: 280px; }
+}
+
+@media (max-width: 768px) {
+    .skeleton-homepage { padding: 12px 16px; gap: 12px; }
+    .skeleton-product-detail { padding: 16px; }
+    .skeleton-cards-grid { gap: 10px; }
+    .skeleton-banner { height: 200px; }
+
+    .skeleton-category-row {
+        gap: 12px;
+        padding: 12px 16px;
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .skeleton-homepage { padding: 8px 12px; }
+    .skeleton-cards-grid { gap: 8px; }
+    .skeleton-action-btns { flex-direction: column; }
+    .skeleton-detail-info { padding: 16px; }
+}

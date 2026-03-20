@@ -1,0 +1,64 @@
+/* InvoiceGenerator.css */
+
+.invoice-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 18px;
+    background: linear-gradient(135deg, #2874f0, #1a5dc7);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 10px rgba(40, 116, 240, 0.3);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.invoice-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.4s ease;
+}
+
+.invoice-btn:hover::before {
+    left: 100%;
+}
+
+.invoice-btn:hover {
+    background: linear-gradient(135deg, #1a5dc7, #0f3d8a);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(40, 116, 240, 0.4);
+}
+
+.invoice-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(40, 116, 240, 0.3);
+}
+
+.invoice-icon {
+    font-size: 15px;
+    line-height: 1;
+}
+
+.invoice-label {
+    letter-spacing: 0.2px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .invoice-label {
+        display: none;
+    }
+
+    .invoice-btn {
+        padding: 9px 12px;
+    }
+}
