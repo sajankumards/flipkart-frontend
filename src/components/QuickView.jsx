@@ -161,3 +161,4 @@ const QuickView = ({ product, onClose }) => {
 
 export default QuickView;
 
+

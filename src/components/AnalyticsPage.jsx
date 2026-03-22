@@ -27,9 +27,9 @@ const AnalyticsPage = () => {
     const loadData = async () => {
         try {
             const [statsRes, ordersRes, productsRes] = await Promise.all([
-                fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/admin/stats', { headers }),
-                fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/admin/orders', { headers }),
-                fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/admin/products', { headers }),
+                fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/admin/stats', { headers }),
+                fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/admin/orders', { headers }),
+                fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/admin/products', { headers }),
             ]);
             const [statsData, ordersData, productsData] = await Promise.all([
                 statsRes.json(), ordersRes.json(), productsRes.json()
@@ -286,4 +286,5 @@ const AnalyticsPage = () => {
 };
 
 export default AnalyticsPage;
+
 

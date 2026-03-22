@@ -57,7 +57,7 @@ const ProductRow = ({
             } else {
                 // Default API call using config
                 const response = await fetch(
-                    apiConfig.url || 'process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/cart/add',
+                    apiConfig.url || 'process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/cart/add',
                     {
                         method: apiConfig.method,
                         headers: apiConfig.headers,
@@ -234,10 +234,11 @@ ProductRow.defaultProps = {
     apiConfig: {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        url: 'process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/cart/add',
+        url: 'process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/cart/add',
         extraBody: {}
     }
 };
 
 export default ProductRow;
+
 

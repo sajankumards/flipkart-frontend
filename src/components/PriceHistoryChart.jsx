@@ -166,3 +166,4 @@ const PriceHistoryChart = ({ currentPrice, productName }) => {
 
 export default PriceHistoryChart;
 
+

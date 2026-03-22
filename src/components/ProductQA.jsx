@@ -18,7 +18,7 @@ const ProductQA = ({ productId }) => {
 
     const fetchQA = async () => {
         try {
-            const res = await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/qa/product/${productId}`);
+            const res = await fetch(`process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/qa/product/${productId}`);
             const data = await res.json();
             if (data.success) setQuestions(data.questions);
         } catch (error) {
@@ -39,7 +39,7 @@ const ProductQA = ({ productId }) => {
             return;
         }
         try {
-            const res = await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/qa/ask', {
+            const res = await fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/qa/ask', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -62,7 +62,7 @@ const ProductQA = ({ productId }) => {
 
     const handleVote = async (qaId) => {
         try {
-            await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/qa/${qaId}/vote`, { method: 'PUT' });
+            await fetch(`process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/qa/${qaId}/vote`, { method: 'PUT' });
             fetchQA();
         } catch (error) {
             console.log('Vote error:', error);
@@ -144,4 +144,5 @@ const ProductQA = ({ productId }) => {
 };
 
 export default ProductQA;
+
 

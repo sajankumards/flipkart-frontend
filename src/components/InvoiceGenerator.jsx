@@ -413,3 +413,4 @@ const Invoicegenerator = ({ order, user }) => {
 
 export default Invoicegenerator;
 
+

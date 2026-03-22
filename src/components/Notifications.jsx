@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Notifications.css';
 
-const API = process.env.REACT_APP_API_URL || 'process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'';
+const API = process.env.REACT_APP_API_URL || 'process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'';
 
 const Notifications = () => {
     const [open, setOpen] = useState(false);
@@ -114,4 +114,5 @@ const Notifications = () => {
 };
 
 export default Notifications;
+
 

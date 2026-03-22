@@ -107,7 +107,7 @@ const SpinWheel = ({ onClose }) => {
                 localStorage.setItem('lastSpinDate', new Date().toDateString());
 
                 if (SEGMENTS[randomSegment].points > 0 && user) {
-                    fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/loyalty/${user.userId}/add`, {
+                    fetch(`process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/loyalty/${user.userId}/add`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -191,4 +191,5 @@ const SpinWheel = ({ onClose }) => {
 };
 
 export default SpinWheel;
+
 

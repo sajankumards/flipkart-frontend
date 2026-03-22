@@ -54,7 +54,7 @@ const OrderHistory = () => {
 
     const fetchOrders = async () => {
         try {
-            const res = await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/orders/user/${user.userId}`);
+            const res = await fetch(`process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/orders/user/${user.userId}`);
             const data = await res.json();
             if (data.success) setOrders(data.orders);
         } catch (error) {
@@ -273,4 +273,5 @@ const OrderHistory = () => {
 };
 
 export default OrderHistory;
+
 

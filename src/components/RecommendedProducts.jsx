@@ -34,3 +34,4 @@ const RecommendedProducts = ({ products, onProductClick }) => {
 
 export default RecommendedProducts;
 
+
