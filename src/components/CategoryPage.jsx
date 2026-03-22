@@ -31,7 +31,7 @@ const CategoryPage = ({ category: propCategory }) => {
     const fetchProducts = async () => {
         setLoading(true);
         try {
-            const res = await fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/products');
+            const res = await fetch(${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}/products');
             if (!res.ok) throw new Error('Products could not be added');
             const all = await res.json();
 
@@ -83,7 +83,7 @@ const CategoryPage = ({ category: propCategory }) => {
     const addToCart = async (e, productId) => {
         e.stopPropagation();
         try {
-            const res = await fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/cart/add', {
+            const res = await fetch(${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}/cart/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ productId, quantity: 1 })
@@ -184,5 +184,8 @@ const CategoryPage = ({ category: propCategory }) => {
 };
 
 export default CategoryPage;
+
+
+
 
 

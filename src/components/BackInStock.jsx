@@ -146,3 +146,6 @@ const BackInStock = ({ product, isOutOfStock = false }) => {
 export default BackInStock;
 
 
+
+
+

@@ -21,7 +21,7 @@ const ProductCompare = () => {
 
     const fetchProducts = async () => {
         try {
-            const res = await fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/products');
+            const res = await fetch(${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}/products');
             const data = await res.json();
             setAllProducts(data);
         } catch (error) {
@@ -72,7 +72,7 @@ const ProductCompare = () => {
 
     const addToCart = async (productId) => {
         try {
-            await fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/cart/add', {
+            await fetch(${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}/cart/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ productId, quantity: 1 })
@@ -215,5 +215,8 @@ const ProductCompare = () => {
 };
 
 export default ProductCompare;
+
+
+
 
 

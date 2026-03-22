@@ -4,7 +4,7 @@ import { useToast } from './Toast';
 import './AdminDashboard.css';
 
 // ===== CONSTANTS & CONFIG =====
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'';
+const API_BASE_URL = process.env.REACT_APP_API_URL || ${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}';
 const ADMIN_TOKEN = 'admin123';
 
 const DEFAULT_HEADERS = {
@@ -781,5 +781,8 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
+
+
 
 

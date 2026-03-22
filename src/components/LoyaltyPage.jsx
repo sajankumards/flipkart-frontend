@@ -21,7 +21,7 @@ const LoyaltyPage = () => {
 
     const fetchLoyalty = async () => {
         try {
-            const res = await fetch(`process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/loyalty/${user.userId}`);
+            const res = await fetch(`(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')/loyalty/${user.userId}`);
             const data = await res.json();
             if (data.success) setLoyalty(data.loyalty);
         } catch (error) {
@@ -38,7 +38,7 @@ const LoyaltyPage = () => {
             return;
         }
         try {
-            const res = await fetch(`process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/loyalty/${user.userId}/redeem`, {
+            const res = await fetch(`(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')/loyalty/${user.userId}/redeem`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ points })
@@ -62,7 +62,7 @@ const LoyaltyPage = () => {
             return;
         }
         try {
-            const res = await fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/loyalty/referral/apply', {
+            const res = await fetch(${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}/loyalty/referral/apply', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ code: referralInput, userId: user.userId })
@@ -241,5 +241,8 @@ const LoyaltyPage = () => {
 };
 
 export default LoyaltyPage;
+
+
+
 
 

@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
         button.disabled = true;
         button.innerHTML = t.adding || 'Adding...';
         try {
-            const res = await fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/cart/add', {
+            const res = await fetch(${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}/cart/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ productId: id, quantity: 1 })
@@ -74,5 +74,8 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
+
+
+
 
 

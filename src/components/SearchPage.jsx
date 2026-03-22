@@ -69,7 +69,7 @@ const SearchPage = () => {
         setLoading(true);
         try {
             const res = await fetch(
-                `process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/products/search?keyword=${encodeURIComponent(query)}`
+                `(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')/products/search?keyword=${encodeURIComponent(query)}`
             );
             const data = await res.json();
 
@@ -131,7 +131,7 @@ const SearchPage = () => {
         e.stopPropagation();
         setAddingToCart(productId);
         try {
-            const res = await fetch('process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/cart/add', {
+            const res = await fetch(${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}/cart/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ productId, quantity: 1 })
@@ -246,5 +246,8 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
+
+
+
 
 

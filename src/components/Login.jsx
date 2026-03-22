@@ -39,8 +39,8 @@ const Login = () => {
 
         try {
             const url = isLogin
-                ? 'process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/auth/login'
-                : 'process.env.REACT_APP_API_URL || '(process.env.REACT_APP_API_URL || 'http://localhost:8080/api')'/auth/signup';
+                ? ${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}/auth/login'
+                : ${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}/auth/signup';
 
             const body = isLogin
                 ? { email: formData.email, password: formData.password }
@@ -336,5 +336,8 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
 
 
