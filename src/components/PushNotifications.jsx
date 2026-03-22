@@ -100,3 +100,4 @@ const PushNotifications = () => {
 };
 
 export default PushNotifications;
+

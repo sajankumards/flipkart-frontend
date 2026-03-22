@@ -61,7 +61,7 @@ const OrderTracking = () => {
 
     const fetchOrders = async () => {
         try {
-            const res = await fetch(`http://localhost:8080/api/orders/user/${user.userId}`);
+            const res = await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/orders/user/${user.userId}`);
             const data = await res.json();
             if (data.success && data.orders?.length > 0) {
                 setOrders(data.orders);
@@ -78,7 +78,7 @@ const OrderTracking = () => {
         setSelectedOrder(order);
         setTrackingLoading(true);
         try {
-            const res = await fetch(`http://localhost:8080/api/orders/${order.id}/track`);
+            const res = await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/orders/${order.id}/track`);
             const data = await res.json();
             setTracking(data);
         } catch (error) {
@@ -285,3 +285,4 @@ const OrderTracking = () => {
 };
 
 export default OrderTracking;
+

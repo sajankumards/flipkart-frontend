@@ -30,8 +30,8 @@ const PaymentPage = () => {
     const fetchCart = async () => {
         try {
             const [cartRes, productsRes] = await Promise.all([
-                fetch('http://localhost:8080/api/cart'),
-                fetch('http://localhost:8080/api/products')
+                fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/cart'),
+                fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/products')
             ]);
             const cartData = await cartRes.json();
             const productsData = await productsRes.json();
@@ -95,7 +95,7 @@ const PaymentPage = () => {
         try {
             const user = JSON.parse(localStorage.getItem('user'));
             if (user) {
-                await fetch('http://localhost:8080/api/orders/place', {
+                await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/orders/place', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -105,7 +105,7 @@ const PaymentPage = () => {
                         paymentMethod
                     })
                 });
-                await fetch('http://localhost:8080/api/notifications/add', {
+                await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/notifications/add', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -114,7 +114,7 @@ const PaymentPage = () => {
                         type: 'order', icon: '📦'
                     })
                 });
-                await fetch(`http://localhost:8080/api/loyalty/${user.userId}/add`, {
+                await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/loyalty/${user.userId}/add`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -123,7 +123,7 @@ const PaymentPage = () => {
                     })
                 });
             }
-            await fetch('http://localhost:8080/api/cart/clear', { method: 'DELETE' });
+            await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/cart/clear', { method: 'DELETE' });
             setOrderPlaced(true);
         } catch (error) {
             console.log('Error:', error);
@@ -564,3 +564,4 @@ const PaymentPage = () => {
 };
 
 export default PaymentPage;
+

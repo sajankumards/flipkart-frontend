@@ -22,7 +22,7 @@ const AddressBook = () => {
 
     const fetchAddresses = async () => {
         try {
-            const res = await fetch(`http://localhost:8080/api/addresses/user/${user.userId}`);
+            const res = await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/addresses/user/${user.userId}`);
             const data = await res.json();
             if (data.success) setAddresses(data.addresses);
         } catch (error) {
@@ -38,7 +38,7 @@ const AddressBook = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('http://localhost:8080/api/addresses/add', {
+            const res = await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/addresses/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...formData, userId: user.userId })
@@ -58,7 +58,7 @@ const AddressBook = () => {
 
     const deleteAddress = async (id) => {
         try {
-            await fetch(`http://localhost:8080/api/addresses/${id}`, { method: 'DELETE' });
+            await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/addresses/${id}`, { method: 'DELETE' });
             fetchAddresses();
         } catch (error) {
             console.log('Error:', error);
@@ -67,7 +67,7 @@ const AddressBook = () => {
 
     const setDefault = async (id) => {
         try {
-            await fetch(`http://localhost:8080/api/addresses/${id}/default`, { method: 'PUT' });
+            await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/addresses/${id}/default`, { method: 'PUT' });
             fetchAddresses();
         } catch (error) {
             console.log('Error:', error);
@@ -188,3 +188,4 @@ const AddressBook = () => {
 };
 
 export default AddressBook;
+

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Notifications.css';
 
+const API = process.env.REACT_APP_API_URL || 'process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'';
+
 const Notifications = () => {
     const [open, setOpen] = useState(false);
     const [notifications, setNotifications] = useState([]);
@@ -16,9 +18,8 @@ const Notifications = () => {
 
     useEffect(() => {
         const handleClickOutside = (e) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target))
                 setOpen(false);
-            }
         };
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -26,22 +27,20 @@ const Notifications = () => {
 
     const fetchNotifications = async () => {
         try {
-            const res = await fetch(`http://localhost:8080/api/notifications/${user.userId}`);
+            const res = await fetch(`${API}/notifications/${user.userId}`);
             const data = await res.json();
             if (data.success) {
                 setNotifications(data.notifications);
                 setUnreadCount(data.unreadCount);
             }
         } catch (error) {
-            console.log('Error:', error);
+            console.log('Notifications error:', error);
         }
     };
 
     const markAllRead = async () => {
         try {
-            await fetch(`http://localhost:8080/api/notifications/${user.userId}/read-all`, {
-                method: 'PUT'
-            });
+            await fetch(`${API}/notifications/${user.userId}/read-all`, { method: 'PUT' });
             setNotifications(prev => prev.map(n => ({ ...n, read: true })));
             setUnreadCount(0);
         } catch (error) {
@@ -51,9 +50,7 @@ const Notifications = () => {
 
     const markRead = async (index) => {
         try {
-            await fetch(`http://localhost:8080/api/notifications/${user.userId}/read/${index}`, {
-                method: 'PUT'
-            });
+            await fetch(`${API}/notifications/${user.userId}/read/${index}`, { method: 'PUT' });
             const updated = [...notifications];
             updated[index].read = true;
             setNotifications(updated);
@@ -92,17 +89,14 @@ const Notifications = () => {
                             <button onClick={markAllRead}>Mark all read</button>
                         )}
                     </div>
-
                     <div className="notif-list">
                         {notifications.length === 0 ? (
                             <div className="no-notif">No notifications yet!</div>
                         ) : (
                             notifications.map((notif, index) => (
-                                <div
-                                    key={index}
+                                <div key={index}
                                     className={`notif-item ${!notif.read ? 'unread' : ''}`}
-                                    onClick={() => markRead(index)}
-                                >
+                                    onClick={() => markRead(index)}>
                                     <div className="notif-icon">{notif.icon}</div>
                                     <div className="notif-content">
                                         <p>{notif.message}</p>
@@ -120,3 +114,4 @@ const Notifications = () => {
 };
 
 export default Notifications;
+

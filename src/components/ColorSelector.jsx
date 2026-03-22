@@ -26,3 +26,4 @@ const ColorSelector = ({ colors, selected, onChange }) => {
 };
 
 export default ColorSelector;
+

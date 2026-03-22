@@ -15,7 +15,7 @@ const RecentlyViewed = () => {
             const saved = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
             if (saved.length === 0) return;
 
-            const res = await fetch('http://localhost:8080/api/products');
+            const res = await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/products');
             const allProducts = await res.json();
 
             const recent = saved
@@ -60,3 +60,4 @@ const RecentlyViewed = () => {
 };
 
 export default RecentlyViewed;
+

@@ -107,3 +107,4 @@ const SocialShare = ({ product }) => {
 };
 
 export default SocialShare;
+

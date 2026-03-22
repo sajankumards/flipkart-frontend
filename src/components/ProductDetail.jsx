@@ -54,12 +54,12 @@ const ProductDetail = () => {
 
     const fetchProduct = async () => {
         try {
-            const res = await fetch(`http://localhost:8080/api/products/${id}`);
+            const res = await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/products/${id}`);
             if (!res.ok) throw new Error('Not found');
             const data = await res.json();
             setProduct(data);
 
-            const allRes = await fetch('http://localhost:8080/api/products');
+            const allRes = await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/products');
             const allData = await allRes.json();
             const related = allData
                 .filter(p => p.category === data.category && p.id !== data.id)
@@ -78,7 +78,7 @@ const ProductDetail = () => {
 
     const fetchReviews = async () => {
         try {
-            const res = await fetch(`http://localhost:8080/api/reviews/product/${id}`);
+            const res = await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/reviews/product/${id}`);
             const data = await res.json();
             if (data.success) {
                 setReviews(data.reviews);
@@ -89,7 +89,7 @@ const ProductDetail = () => {
 
     const checkWishlist = async () => {
         try {
-            const res = await fetch(`http://localhost:8080/api/wishlist/check?userId=${user.userId}&productId=${id}`);
+            const res = await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/wishlist/check?userId=${user.userId}&productId=${id}`);
             const data = await res.json();
             setInWishlist(data.inWishlist);
         } catch (e) { console.log(e); }
@@ -98,7 +98,7 @@ const ProductDetail = () => {
     const handleAddToCart = async () => {
         setAddingToCart(true);
         try {
-            const res = await fetch('http://localhost:8080/api/cart/add', {
+            const res = await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/cart/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ productId: product.id, quantity })
@@ -122,11 +122,11 @@ const ProductDetail = () => {
         if (!user) { showToast('Please login first!', 'warning'); navigate('/login'); return; }
         try {
             if (inWishlist) {
-                await fetch(`http://localhost:8080/api/wishlist/remove?userId=${user.userId}&productId=${product.id}`, { method: 'DELETE' });
+                await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/wishlist/remove?userId=${user.userId}&productId=${product.id}`, { method: 'DELETE' });
                 setInWishlist(false);
                 showToast('Removed from Wishlist!', 'info');
             } else {
-                await fetch('http://localhost:8080/api/wishlist/add', {
+                await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/wishlist/add', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ userId: user.userId, productId: product.id })
@@ -142,7 +142,7 @@ const ProductDetail = () => {
         if (!user) { navigate('/login'); return; }
         if (!reviewForm.comment.trim()) { showToast('Please write a comment!', 'warning'); return; }
         try {
-            const res = await fetch('http://localhost:8080/api/reviews/add', {
+            const res = await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/reviews/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -675,3 +675,4 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+

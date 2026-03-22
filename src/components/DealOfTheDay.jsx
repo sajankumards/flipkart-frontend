@@ -47,3 +47,4 @@ const DealOfTheDay = ({ product, onProductClick }) => {
 };
 
 export default DealOfTheDay;
+

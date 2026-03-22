@@ -43,8 +43,8 @@ const CartPage = () => {
     const fetchCartAndProducts = async () => {
         try {
             const [cartRes, productsRes] = await Promise.all([
-                fetch('http://localhost:8080/api/cart'),
-                fetch('http://localhost:8080/api/products')
+                fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/cart'),
+                fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/products')
             ]);
             const cartData = await cartRes.json();
             const productsData = await productsRes.json();
@@ -75,7 +75,7 @@ const CartPage = () => {
         if (newQty < 1) return;
         setUpdatingId(productId);
         try {
-            await fetch(`http://localhost:8080/api/cart/${productId}?quantity=${newQty}`, { method: 'PUT' });
+            await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/cart/${productId}?quantity=${newQty}`, { method: 'PUT' });
             const updated = cartItems.map(item =>
                 item.productId === productId ? { ...item, quantity: newQty } : item);
             setCartItems(updated);
@@ -90,7 +90,7 @@ const CartPage = () => {
     const removeItem = async (productId) => {
         setRemovingId(productId);
         try {
-            await fetch(`http://localhost:8080/api/cart/${productId}`, { method: 'DELETE' });
+            await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/cart/${productId}`, { method: 'DELETE' });
             const updated = cartItems.filter(item => item.productId !== productId);
             setCartItems(updated);
             calculateTotal(updated);
@@ -105,7 +105,7 @@ const CartPage = () => {
     const clearCart = async () => {
         if (!window.confirm('Cart clear karna hai?')) return;
         try {
-            await fetch('http://localhost:8080/api/cart/clear', { method: 'DELETE' });
+            await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/cart/clear', { method: 'DELETE' });
             setCartItems([]);
             setTotal(0); setFinalAmount(0); setDiscount(0); setCouponApplied(false);
             showToast('Cart cleared! 🗑️', 'success');
@@ -117,7 +117,7 @@ const CartPage = () => {
     const applyCoupon = async () => {
         if (!couponCode.trim()) { showToast('Coupon code daalo!', 'warning'); return; }
         try {
-            const res = await fetch('http://localhost:8080/api/coupons/validate', {
+            const res = await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/coupons/validate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ code: couponCode, orderAmount: total })
@@ -402,3 +402,4 @@ const CartPage = () => {
 };
 
 export default CartPage;
+

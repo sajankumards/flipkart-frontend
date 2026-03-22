@@ -44,8 +44,8 @@ const WishlistPage = () => {
     const fetchWishlist = async () => {
         try {
             const [wishlistRes, productsRes] = await Promise.all([
-                fetch(`http://localhost:8080/api/wishlist/${user.userId}`),
-                fetch('http://localhost:8080/api/products')
+                fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/wishlist/${user.userId}`),
+                fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/products')
             ]);
             const wishlistData = await wishlistRes.json();
             const productsData = await productsRes.json();
@@ -65,7 +65,7 @@ const WishlistPage = () => {
     const removeFromWishlist = async (productId) => {
         setRemovingId(productId);
         try {
-            await fetch(`http://localhost:8080/api/wishlist/remove?userId=${user.userId}&productId=${productId}`, {
+            await fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/wishlist/remove?userId=${user.userId}&productId=${productId}`, {
                 method: 'DELETE'
             });
             setWishlistItems(prev => prev.filter(item => item.productId !== productId));
@@ -80,7 +80,7 @@ const WishlistPage = () => {
     const addToCart = async (productId) => {
         setAddingId(productId);
         try {
-            const res = await fetch('http://localhost:8080/api/cart/add', {
+            const res = await fetch('process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/cart/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ productId, quantity: 1 })
@@ -104,7 +104,7 @@ const WishlistPage = () => {
         try {
             await Promise.all(
                 wishlistItems.map(item =>
-                    fetch(`http://localhost:8080/api/wishlist/remove?userId=${user.userId}&productId=${item.productId}`, {
+                    fetch(`process.env.REACT_APP_API_URL || '$env:REACT_APP_API_URL'/wishlist/remove?userId=${user.userId}&productId=${item.productId}`, {
                         method: 'DELETE'
                     })
                 )
@@ -272,3 +272,4 @@ const WishlistPage = () => {
 };
 
 export default WishlistPage;
+
